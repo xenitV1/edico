@@ -15,8 +15,9 @@ description: Core Knowledge Management Skill. Reduces research redundancy and pr
 2. NO REDUNDANCY - If existing data is fresh (less than 2 months old), use it as the primary source instead of performing a new search.
 3. SOURCE-BASED TIMESTAMPS - Do NOT use the current date for the record. Use the date mentioned in the sources (e.g., article publication date) to ensure historical accuracy.
 4. EXHAUSTIVE ANALYSIS - Never write a "summary." Write a COMPREHENSIVE analysis. It must be so detailed that any subsequent AI reading it will NOT need to perform a new search. Include all data points, technical nuances, and context.
-5. AUTONOMOUS PERSISTENCE - When /edico is triggered or research is complete, synthesize and save immediately without asking for user confirmation.
-6. QUALITY OVER QUANTITY - Do not save raw data dumps; only persist high-value, deep-dive insights.
+5. ENGLISH ONLY PERSISTENCE - All data saved to the local database (topic, detailed_analysis, tags) MUST be written in English, regardless of the user's language or the source's language. This ensures 100% interoperability across systems.
+6. AUTONOMOUS PERSISTENCE - When /edico is triggered or research is complete, synthesize and save immediately without asking for user confirmation.
+7. QUALITY OVER QUANTITY - Do not save raw data dumps; only persist high-value, deep-dive insights.
 ```
 </iron_laws>
 
@@ -30,12 +31,12 @@ Every time a user asks for research or a new topic is introduced:
 ## 📦 PROTOCOL 2: DATA SYNTHESIS & STORAGE (AUTONOMOUS)
 When research is completed or `/edico` is called:
 1.  **Extract Dates**: Identify the publication or validity date from the sources.
-2.  **Analyze Exhaustively**: Write a deep-dive analysis that contains all critical findings.
+2.  **Analyze Exhaustively in English**: Write a deep-dive analysis that contains all critical findings. This must be in English.
 3.  **Execute**: Run `node skills/edico/scripts/persist.js` with structured parameters, including `--detailed_analysis` and `--timestamp`.
 4.  **Silent Success**: The operation must be silent and autonomous unless an error occurs.
 
 ## ⚙️ STORAGE COMMAND TEMPLATE
-`node skills/edico/scripts/persist.js --topic "[TOPIC]" --detailed_analysis "[EXHAUSTIVE_CONTENT]" --sources "[URL1],[URL2]" --tags "[TAG1],[TAG2]" --timestamp "[SOURCE_DATE]"`
+`node skills/edico/scripts/persist.js --topic "[TOPIC_IN_ENGLISH]" --detailed_analysis "[EXHAUSTIVE_CONTENT_IN_ENGLISH]" --sources "[URL1],[URL2]" --tags "[TAG1],[TAG2]" --timestamp "[SOURCE_DATE]"`
 </protocols>
 
 <usage_guidelines>
