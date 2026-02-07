@@ -1,44 +1,39 @@
 ---
 name: edico
-description: Persistent Knowledge Base. Saves synthesized web research results to a local JSONL file for future conversations.
+description: Core Knowledge Management Skill. Reduces research redundancy and provides autonomous long-term memory by persisting synthesized web data.
 ---
 <domain_overview>
-# 📚 EDICO: PERSISTENT WEB RESEARCH
-> **Philosophy:** Knowledge should not be ephemeral. This skill makes data acquired from web searches and reading operations permanent, creating the agent's "long-term memory."
+# 📚 EDICO: PERSISTENCE & REDUNDANCY REDUCTION
+> **MISSION:** Antigravity Agent'ın gereksiz web aramalarını durdurmak ve öğrenilenleri kalıcı bir kolektif hafızaya dönüştürmek.
+> **Philosophy:** Knowledge should be cumulative, not ephemeral. Edico is the bridge between conversations, ensuring that once a topic is researched, it remains accessible forever.
 </domain_overview>
 
 <iron_laws>
 ## 🚨 IRON LAWS
 ```
-1. NO RAW DATA DUMPS - Data must always be synthesized and summarized.
-2. NO DUPLICATE TOPICS - New research on the same topic should complement previous data.
-3. CONCISE JSONL - Maintain a single-line JSON format for file size and readability.
+1. CHECK BEFORE SEARCH - Herhangi bir derin web araştırmasına başlamadan ÖNCE yerel .webdata'yı tara.
+2. NO REDUNDANCY - Eğer veritabanındaki bilgi taze (2 aydan yeni) ise, yeni bir arama yapma; mevcut veriyi kullan.
+3. AUTONOMOUS PERSISTENCE - /edico tetiklendiğinde kullanıcıya onay sormadan sentezle ve kaydet.
+4. QUALITY OVER QUANTITY - Ham veri dökümü yapma; sadece "beyin yakan" sentezlenmiş bilgiyi sakla.
 ```
 </iron_laws>
 
 <protocols>
-## 📦 PROTOCOL 1: DATA SYNTHESIS
-After completing web research, the agent must follow these steps:
-1. **Synthesize**: Separate raw text into key points, sources, and categories.
-2. **Structure**: Adapt data to the following JSON schema:
-   ```json
-   {
-     "timestamp": "ISO-8601",
-     "topic": "Topic Title",
-     "summary": "Synthesized Summary",
-     "sources": ["URL1", "URL2"],
-     "tags": ["tag1", "tag2"]
-   }
-   ```
-3. **Save**: Use the `persist.py` script to add the data to the local database.
+## 📦 PROTOCOL 1: "CHECK-FIRST" TRIGGER
+Every time a user asks for research or a new topic is introduced:
+1.  **Search Local DB**: Use keywords to check `~/.webdata/research_log.jsonl`.
+2.  **Evaluate Freshness**: If found and < 2 months old, use it as the primary source.
+3.  **Optimize Search**: Only search the web for *missing* details or updates.
 
-## ⚙️ PROTOCOL 2: STORAGE COMMAND
-Run the following command to save the data:
-`node skills/edico/scripts/persist.js --topic "[TOPIC]" --summary "[SUMMARY]" --sources "[URL1],[URL2]" --tags "[TAG1],[TAG2]"`
+## 📦 PROTOCOL 2: DATA SYNTHESIS & STORAGE (AUTONOMOUS)
+When research is completed or `/edico` is called:
+1.  **Synthesize**: Contextualize the data (Key points, Sources, Category).
+2.  **Execute**: Run `node skills/edico/scripts/persist.js` with structured parameters.
+3.  **Silent Success**: The operation must be silent and autonomous unless an error occurs.
 </protocols>
 
 <usage_guidelines>
 ## 🛠️ USAGE
-- The agent should activate this skill when the `/edico` command is received or when important research is completed.
-- The database is stored by default at `~/.webdata/research_log.jsonl`.
+- Use this skill to combat "conversation amnesia."
+- Edico is the default memory layer for all web-related research tasks.
 </usage_guidelines>

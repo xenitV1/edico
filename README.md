@@ -1,23 +1,29 @@
-# Edico: Persistent AI Knowledge Base
+# Edico: Persistent AI Knowledge Base & Redundancy Guard
 
-Edico is a Google Antigravity skill designed to provide long-term memory for AI-driven web research. 
+Edico is a core architectural expansion for Google Antigravity agents, designed to solve the problem of "conversation amnesia" and redundant web searching.
 
-## 🚀 Overview
-Normally, research results are lost between AI conversations. Edico solves this by:
-1. Synthesizing web search results into concise summaries.
-2. Appending them to a local `research_log.jsonl` file.
-3. Making historical data accessible to future AI sessions.
+## 🎯 The Mission
+The primary goal of Edico is to:
+1.  **Eliminate Redundancy**: Prevent the AI from performing the same web searches in every new conversation.
+2.  **Long-Term Memory**: Act as a persistent, local database of synthesized knowledge that spans across multiple AI sessions.
+3.  **Autonomous Grounding**: Provide a reliable, local source of truth that the AI checks *before* reaching out to the live web.
 
-## 📁 Installation
-To use this skill locally:
-1. Copy the `skills/edico` folder to your Antigravity skills directory (usually `~/.gemini/antigravity/skills/`).
-2. Copy the `.agent/workflows/edico.md` to your workspace's workflow directory.
+## 📁 Project Structure
+- `skills/edico/SKILL.md`: The core logic and "Iron Laws" that govern the agent's memory behavior.
+- `skills/edico/scripts/persist.js`: The storage engine (Node.js) that manages the local JSONL database.
+- `.agent/workflows/edico.md`: The `/edico` slash command providing a fully autonomous research-persistence pipeline.
 
-## 🛠️ Usage
-Trigger the synthesis and storage manually or via the slash command:
-- **Slash Command**: `/edico`
-- **Manual**: Use the `edico` skill protocols defined in `SKILL.md`.
+## 🚀 How it Works
+1.  **Check First**: When a topic is introduced, the agent first scans `~/.webdata/research_log.jsonl`.
+2.  **Freshness Check**: If data exists and is less than 2 months old, it's used immediately.
+3.  **Synthesis**: New research is synthesized into concise, high-value data.
+4.  **Autonomous Save**: The agent persists the new data without interrupting the user.
 
-## 💾 Storage
-All data is stored in line-delimited JSON (JSONL) at:
+## 💾 Storage Location
+Data is stored as a line-delimited JSON (JSONL) file at:
 `~/.webdata/research_log.jsonl`
+
+## 🛠️ Installation
+1.  Add the `skills/edico` folder to your skills directory.
+2.  Add the `/edico` command to your workspace workflows.
+3.  Let the agent handle the rest autonomously.
