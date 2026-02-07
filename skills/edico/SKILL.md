@@ -4,7 +4,7 @@ description: Core Knowledge Management Skill. Reduces research redundancy and pr
 ---
 <domain_overview>
 # 📚 EDICO: PERSISTENCE & REDUNDANCY REDUCTION
-> **MISSION:** To stop redundant web searches by the Antigravity Agent and transform learned insights into a permanent, collective local memory.
+> **MISSION:** To stop redundant web searches by the AI and transform learned insights into a permanent, collective local memory.
 > **Philosophy:** Knowledge should be cumulative, not ephemeral. Edico is the bridge between conversations, ensuring that once a topic is researched, it remains accessible forever.
 </domain_overview>
 
