@@ -16,10 +16,11 @@ function persistData() {
         params[key] = value;
     }
 
-    const { topic, summary, sources, tags, timestamp } = params;
+    // analysis is the new summary, representing exhaustive research
+    const { topic, analysis, sources, tags, timestamp } = params;
 
-    if (!topic || !summary) {
-        console.error('Error: --topic and --summary are required.');
+    if (!topic || !analysis) {
+        console.error('Error: --topic and --analysis are required.');
         process.exit(1);
     }
 
@@ -34,10 +35,9 @@ function persistData() {
     }
 
     const data = {
-        // Use provided timestamp or fallback to current time
         timestamp: timestamp || new Date().toISOString(),
         topic,
-        summary,
+        detailed_analysis: analysis,
         sources: sources ? sources.split(',').map(s => s.trim()) : [],
         tags: tags ? tags.split(',').map(t => t.trim()) : []
     };

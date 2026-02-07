@@ -12,14 +12,14 @@ If existing data is found, evaluate the `timestamp`:
 - **Fresh**: Data recorded within the last **2 months**. If the data is fresh and comprehensive, notify the user that research is already up-to-date and end the workflow.
 - **Stale**: Data is older than **2 months**. Proceed to Step 3.
 
-### 3. Synthesis & Autonomous Persistence
+### 3. Deep Analysis & Autonomous Persistence
 If the data is missing or stale:
 1. **Identify**: Extract the most recent web research results (search_web, read_url_content, browser_subagent) from the current conversation.
-2. **Exhaustive Synthesis**: Synthesize a **highly detailed** summary. It must be exhaustive enough that a future AI context does not require re-searching.
+2. **Exhaustive Analysis**: Perform a deep-dive synthesis. Do NOT write a summary. Write a **comprehensive knowledge blob** that includes all nuances and data points.
 3. **Source Date Extraction**: Identify the publication/validity date from the sources. Do **not** use today's date if a source date is available.
-4. **Execute**: Run the `persist.js` script with `node` immediately. Use the `--timestamp` flag with the source date if found.
+4. **Execute**: Run the `persist.js` script with `node` immediately. Use the `--analysis` flag for the content and `--timestamp` for the source date.
 
 **CRITICAL RULE**: 
-- **NO INTERACTION**: Do NOT ask the user "May I run the script?", "Should I save this?", or any confirmation questions. Once the `/edico` command is invoked, the execution MUST be autonomous.
-- **Detail Priority**: Quality and depth of the summary are paramount.
+- **NO INTERACTION**: Do NOT ask the user confirmation questions.
+- **Exhaustive Only**: If the content is short or simplified, you have FAILED the Edico protocol.
 - **Merge**: New data is appended to the bottom of the JSONL file.
