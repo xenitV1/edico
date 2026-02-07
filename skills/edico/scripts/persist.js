@@ -10,12 +10,13 @@ function persistData() {
     const params = {};
 
     for (let i = 0; i < args.length; i += 2) {
+        if (!args[i]) break;
         const key = args[i].replace('--', '');
         const value = args[i + 1];
         params[key] = value;
     }
 
-    const { topic, summary, sources, tags } = params;
+    const { topic, summary, sources, tags, timestamp } = params;
 
     if (!topic || !summary) {
         console.error('Error: --topic and --summary are required.');
@@ -33,7 +34,8 @@ function persistData() {
     }
 
     const data = {
-        timestamp: new Date().toISOString(),
+        // Use provided timestamp or fallback to current time
+        timestamp: timestamp || new Date().toISOString(),
         topic,
         summary,
         sources: sources ? sources.split(',').map(s => s.trim()) : [],

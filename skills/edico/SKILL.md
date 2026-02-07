@@ -13,8 +13,10 @@ description: Core Knowledge Management Skill. Reduces research redundancy and pr
 ```
 1. CHECK BEFORE SEARCH - Always scan the local .webdata directory BEFORE starting any deep web research.
 2. NO REDUNDANCY - If existing data is fresh (less than 2 months old), use it as the primary source instead of performing a new search.
-3. AUTONOMOUS PERSISTENCE - When /edico is triggered or research is complete, synthesize and save immediately without asking for user confirmation.
-4. QUALITY OVER QUANTITY - Do not save raw data dumps; only persist high-value, synthesized insights.
+3. SOURCE-BASED TIMESTAMPS - Do NOT use the current date for the record. Use the date mentioned in the sources (e.g., article publication date) to ensure historical accuracy.
+4. EXHAUSTIVE SUMMARIES - The summary must be so detailed that any subsequent AI reading it will NOT need to perform a new search. Include nuances, data points, and context.
+5. AUTONOMOUS PERSISTENCE - When /edico is triggered or research is complete, synthesize and save immediately without asking for user confirmation.
+6. QUALITY OVER QUANTITY - Do not save raw data dumps; only persist high-value, synthesized insights.
 ```
 </iron_laws>
 
@@ -27,9 +29,10 @@ Every time a user asks for research or a new topic is introduced:
 
 ## 📦 PROTOCOL 2: DATA SYNTHESIS & STORAGE (AUTONOMOUS)
 When research is completed or `/edico` is called:
-1.  **Synthesize**: Contextualize the data (Key points, Sources, Category).
-2.  **Execute**: Run `node skills/edico/scripts/persist.js` with structured parameters.
-3.  **Silent Success**: The operation must be silent and autonomous unless an error occurs.
+1.  **Extract Dates**: Identify the publication or validity date from the sources.
+2.  **Synthesize Exhaustively**: Write a comprehensive summary that contains all critical findings.
+3.  **Execute**: Run `node skills/edico/scripts/persist.js` with structured parameters, including `--timestamp` if a source date is found.
+4.  **Silent Success**: The operation must be silent and autonomous unless an error occurs.
 </protocols>
 
 <usage_guidelines>
