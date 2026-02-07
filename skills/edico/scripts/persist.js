@@ -16,11 +16,11 @@ function persistData() {
         params[key] = value;
     }
 
-    // analysis is the new summary, representing exhaustive research
-    const { topic, analysis, sources, tags, timestamp } = params;
+    // detailed_analysis is the mandatory field for exhaustive research
+    const { topic, detailed_analysis, sources, tags, timestamp } = params;
 
-    if (!topic || !analysis) {
-        console.error('Error: --topic and --analysis are required.');
+    if (!topic || !detailed_analysis) {
+        console.error('Error: --topic and --detailed_analysis are required.');
         process.exit(1);
     }
 
@@ -37,7 +37,7 @@ function persistData() {
     const data = {
         timestamp: timestamp || new Date().toISOString(),
         topic,
-        detailed_analysis: analysis,
+        detailed_analysis: detailed_analysis,
         sources: sources ? sources.split(',').map(s => s.trim()) : [],
         tags: tags ? tags.split(',').map(t => t.trim()) : []
     };

@@ -30,9 +30,12 @@ Every time a user asks for research or a new topic is introduced:
 ## 📦 PROTOCOL 2: DATA SYNTHESIS & STORAGE (AUTONOMOUS)
 When research is completed or `/edico` is called:
 1.  **Extract Dates**: Identify the publication or validity date from the sources.
-2.  **Analyze Exhaustively**: Write a deep-dive `detailed_analysis` that contains all critical findings.
-3.  **Execute**: Run `node skills/edico/scripts/persist.js` with structured parameters, including `--analysis` and `--timestamp`.
+2.  **Analyze Exhaustively**: Write a deep-dive analysis that contains all critical findings.
+3.  **Execute**: Run `node skills/edico/scripts/persist.js` with structured parameters, including `--detailed_analysis` and `--timestamp`.
 4.  **Silent Success**: The operation must be silent and autonomous unless an error occurs.
+
+## ⚙️ STORAGE COMMAND TEMPLATE
+`node skills/edico/scripts/persist.js --topic "[TOPIC]" --detailed_analysis "[EXHAUSTIVE_CONTENT]" --sources "[URL1],[URL2]" --tags "[TAG1],[TAG2]" --timestamp "[SOURCE_DATE]"`
 </protocols>
 
 <usage_guidelines>

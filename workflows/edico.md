@@ -17,9 +17,9 @@ If the data is missing or stale:
 1. **Identify**: Extract the most recent web research results (search_web, read_url_content, browser_subagent) from the current conversation.
 2. **Exhaustive Analysis**: Perform a deep-dive synthesis. Do NOT write a summary. Write a **comprehensive knowledge blob** that includes all nuances and data points.
 3. **Source Date Extraction**: Identify the publication/validity date from the sources. Do **not** use today's date if a source date is available.
-4. **Execute**: Run the `persist.js` script with `node` immediately. Use the `--analysis` flag for the content and `--timestamp` for the source date.
+4. **Execute**: Run the `persist.js` script with `node` immediately. Use the `--detailed_analysis` flag for the content and `--timestamp` for the source date.
 
 **CRITICAL RULE**: 
-- **NO INTERACTION**: Do NOT ask the user confirmation questions.
+- **NO INTERACTION**: Do NOT ask any confirmation questions.
 - **Exhaustive Only**: If the content is short or simplified, you have FAILED the Edico protocol.
 - **Merge**: New data is appended to the bottom of the JSONL file.
