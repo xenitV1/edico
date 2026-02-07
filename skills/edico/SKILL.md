@@ -34,7 +34,7 @@ After completing web research, the agent must follow these steps:
 
 ## ⚙️ PROTOCOL 2: STORAGE COMMAND
 Run the following command to save the data:
-`python skills/edico/scripts/persist.py --topic "[TOPIC]" --summary "[SUMMARY]" --sources "[URL1],[URL2]" --tags "[TAG1],[TAG2]"`
+`node skills/edico/scripts/persist.js --topic "[TOPIC]" --summary "[SUMMARY]" --sources "[URL1],[URL2]" --tags "[TAG1],[TAG2]"`
 </protocols>
 
 <usage_guidelines>
