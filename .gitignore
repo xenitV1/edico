@@ -1,12 +1,51 @@
-# Local storage
-.webdata/
+# --- Python ---
 __pycache__/
-*.log
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
 
-# Workspace specifics
+# --- OS Specific ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# --- Antigravity / Agent Specific ---
 .agent/
 .gemini/
 brain/
 task.md
 implementation_plan.md
 walkthrough.md
+
+# --- Edico Specific ---
+.webdata/
+*.log
+research_log.jsonl
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
