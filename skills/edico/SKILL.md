@@ -1,44 +1,44 @@
 ---
 name: edico
-description: Persistent Knowledge Base. Sentezlenen web araştırmalarını gelecekteki konuşmalar için yerel bir JSONL dosyasına kaydeder.
+description: Persistent Knowledge Base. Saves synthesized web research results to a local JSONL file for future conversations.
 ---
 <domain_overview>
 # 📚 EDICO: PERSISTENT WEB RESEARCH
-> **Philosophy:** Bilgi tek seferlik olmamalıdır. Bu yetenek, web aramaları ve okuma işlemlerinden elde edilen verileri kalıcı hale getirerek agent'ın "uzun süreli hafızasını" oluşturur.
+> **Philosophy:** Knowledge should not be ephemeral. This skill makes data acquired from web searches and reading operations permanent, creating the agent's "long-term memory."
 </domain_overview>
 
 <iron_laws>
 ## 🚨 IRON LAWS
 ```
-1. NO RAW DATA DUMPS - Veriler her zaman sentezlenmeli ve özetlenmelidir.
-2. NO DUPLICATE TOPICS - Aynı konu üzerine yapılan yeni araştırmalar önceki verileri tamamlamalıdır.
-3. CONCISE JSONL - Dosya boyutu ve okunabilirlik için tek satırlık JSON formatı korunmalıdır.
+1. NO RAW DATA DUMPS - Data must always be synthesized and summarized.
+2. NO DUPLICATE TOPICS - New research on the same topic should complement previous data.
+3. CONCISE JSONL - Maintain a single-line JSON format for file size and readability.
 ```
 </iron_laws>
 
 <protocols>
 ## 📦 PROTOCOL 1: DATA SYNTHESIS
-Agent, web araştırması bittikten sonra şu adımları izlemelidir:
-1. **Sentezle**: Ham metinleri anahtar noktalar, kaynaklar ve kategorilere ayır.
-2. **Yapılandır**: Veriyi şu JSON şemasına uyarla:
+After completing web research, the agent must follow these steps:
+1. **Synthesize**: Separate raw text into key points, sources, and categories.
+2. **Structure**: Adapt data to the following JSON schema:
    ```json
    {
      "timestamp": "ISO-8601",
-     "topic": "Konu Başlığı",
-     "summary": "Sentezlenmiş Özet",
+     "topic": "Topic Title",
+     "summary": "Synthesized Summary",
      "sources": ["URL1", "URL2"],
-     "tags": ["etiket1", "etiket2"]
+     "tags": ["tag1", "tag2"]
    }
    ```
-3. **Kaydet**: `persist.py` scriptini kullanarak veriyi yerel veritabanına ekle.
+3. **Save**: Use the `persist.py` script to add the data to the local database.
 
 ## ⚙️ PROTOCOL 2: STORAGE COMMAND
-Veriyi kaydetmek için şu komutu çalıştırın:
-`python skills/edico/scripts/persist.py --topic "[KONU]" --summary "[OZET]" --sources "[URL1],[URL2]" --tags "[TAG1],[TAG2]"`
+Run the following command to save the data:
+`python skills/edico/scripts/persist.py --topic "[TOPIC]" --summary "[SUMMARY]" --sources "[URL1],[URL2]" --tags "[TAG1],[TAG2]"`
 </protocols>
 
 <usage_guidelines>
 ## 🛠️ USAGE
-- Agent, `/edico` komutu geldiğinde veya önemli bir araştırma tamamlandığında bu yeteneği devreye almalıdır.
-- Veritabanı varsayılan olarak `~/.webdata/research_log.jsonl` yolunda saklanır.
+- The agent should activate this skill when the `/edico` command is received or when important research is completed.
+- The database is stored by default at `~/.webdata/research_log.jsonl`.
 </usage_guidelines>
