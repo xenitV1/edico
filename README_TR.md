@@ -1,0 +1,30 @@
+# Edico: Kalıcı Yapay Zeka Bilgi Tabanı ve Tekrar Koruyucu
+
+Edico, Google Antigravity ve benzeri yapay zeka agent'ları için geliştirilmiş, "konuşma amnezisi" (oturumlar arası unutkanlık) ve gereksiz web araması sorunlarını çözen temel bir mimari eklentidir.
+
+## 🎯 Misyon
+Edico'nun birincil hedefleri şunlardır:
+1.  **Tekrarı Ortadan Kaldırmak**: Yapay zekanın her yeni konuşmada aynı web aramalarını tekrar yapmasını engellemek.
+2.  **Uzun Süreli Hafıza**: Birden fazla yapay zeka oturumu arasında kalıcı, yerel bir sentezlenmiş bilgi veritabanı oluşturmak.
+3.  **Otonom Doğrulama**: Yapay zekanın canlı web'e erişmeden önce kontrol edeceği güvenilir, yerel bir "tek gerçek kaynak" (single source of truth) sağlamak.
+
+## 📁 Proje Yapısı
+- `skills/edico/SKILL.md`: Agent'ın hafıza davranışını yöneten temel mantık ve "Katı Kurallar" (Iron Laws).
+- `skills/edico/scripts/persist.js`: Yerel JSONL veritabanını yöneten depolama motoru (Node.js).
+- `workflows/edico.md`: Tam otonom bir araştırma-kalıcılık hattı sağlayan `/edico` slash komutu tanımı.
+
+## 🚀 Nasıl Çalışır?
+1.  **Önce Kontrol Et**: Bir konu tanıtıldığında, agent önce `~/.webdata/research_log.jsonl` dosyasını tarar.
+2.  **Tazelik Kontrolü**: Veri mevcutsa ve 2 aydan yeniyse, doğrudan kullanılır.
+3.  **Derin Sentez**: Yeni araştırmalar, başka bir araştırmaya gerek bırakmayacak kadar detaylı ve kapsamlı bir şekilde sentezlenir.
+4.  **Kaynak Bazlı Tarih**: Kayıtlar, bugünün tarihi yerine kaynaklarda belirtilen (makale yayın tarihi vb.) gerçek tarihlerle saklanır.
+5.  **Otonom Kayıt**: Agent, kullanıcıyı bölmeden verileri otomatik olarak kalıcı hale getirir.
+
+## 💾 Depolama Konumu
+Veriler, şu konumda satır tabanlı JSON (JSONL) dosyası olarak saklanır:
+`~/.webdata/research_log.jsonl`
+
+## 🛠️ Kurulum
+1.  `skills/edico` klasörünü yetenekler (skills) dizininize ekleyin.
+2.  `/edico` komutunu çalışma alanı workflow'larınıza dahil edin.
+3.  Geri kalan her şeyi agent'ın otonom olarak halletmesine izin verin.
