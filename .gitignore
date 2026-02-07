@@ -1,0 +1,12 @@
+# Local storage
+.webdata/
+__pycache__/
+*.log
+
+# Workspace specifics
+.agent/
+.gemini/
+brain/
+task.md
+implementation_plan.md
+walkthrough.md
