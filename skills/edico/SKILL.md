@@ -4,17 +4,17 @@ description: Core Knowledge Management Skill. Reduces research redundancy and pr
 ---
 <domain_overview>
 # 📚 EDICO: PERSISTENCE & REDUNDANCY REDUCTION
-> **MISSION:** Antigravity Agent'ın gereksiz web aramalarını durdurmak ve öğrenilenleri kalıcı bir kolektif hafızaya dönüştürmek.
+> **MISSION:** To stop redundant web searches by the Antigravity Agent and transform learned insights into a permanent, collective local memory.
 > **Philosophy:** Knowledge should be cumulative, not ephemeral. Edico is the bridge between conversations, ensuring that once a topic is researched, it remains accessible forever.
 </domain_overview>
 
 <iron_laws>
 ## 🚨 IRON LAWS
 ```
-1. CHECK BEFORE SEARCH - Herhangi bir derin web araştırmasına başlamadan ÖNCE yerel .webdata'yı tara.
-2. NO REDUNDANCY - Eğer veritabanındaki bilgi taze (2 aydan yeni) ise, yeni bir arama yapma; mevcut veriyi kullan.
-3. AUTONOMOUS PERSISTENCE - /edico tetiklendiğinde kullanıcıya onay sormadan sentezle ve kaydet.
-4. QUALITY OVER QUANTITY - Ham veri dökümü yapma; sadece "beyin yakan" sentezlenmiş bilgiyi sakla.
+1. CHECK BEFORE SEARCH - Always scan the local .webdata directory BEFORE starting any deep web research.
+2. NO REDUNDANCY - If existing data is fresh (less than 2 months old), use it as the primary source instead of performing a new search.
+3. AUTONOMOUS PERSISTENCE - When /edico is triggered or research is complete, synthesize and save immediately without asking for user confirmation.
+4. QUALITY OVER QUANTITY - Do not save raw data dumps; only persist high-value, synthesized insights.
 ```
 </iron_laws>
 
@@ -23,7 +23,7 @@ description: Core Knowledge Management Skill. Reduces research redundancy and pr
 Every time a user asks for research or a new topic is introduced:
 1.  **Search Local DB**: Use keywords to check `~/.webdata/research_log.jsonl`.
 2.  **Evaluate Freshness**: If found and < 2 months old, use it as the primary source.
-3.  **Optimize Search**: Only search the web for *missing* details or updates.
+3.  **Optimize Search**: Only search the web for *missing* details or required updates.
 
 ## 📦 PROTOCOL 2: DATA SYNTHESIS & STORAGE (AUTONOMOUS)
 When research is completed or `/edico` is called:
